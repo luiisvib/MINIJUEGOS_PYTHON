@@ -7,7 +7,7 @@ def borrarPantalla():
        os.system ("cls")
 
 borrarPantalla()
-
+svvv
 def mostrarPantalla():
     tablero = [
     ["PARKING",130,150,100,900,444,555,900,"A CARCEL"],
