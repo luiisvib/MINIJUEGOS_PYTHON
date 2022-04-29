@@ -1,14 +1,17 @@
+from logging import _STYLES
 import os
 import time
+from colorama import init, Fore, Back, Style
 def borrarPantalla():
    if os.name == "posix":
        os.system ("clear")
    elif os.name == "ce" or os.name == "nt" or os.name == "dos":
        os.system ("cls")
-
 borrarPantalla()
-svvv
+
+
 def mostrarPantalla():
+    
     tablero = [
     ["PARKING",130,150,100,900,444,555,900,"A CARCEL"],
     [500,"                                                      ",500],
@@ -20,14 +23,14 @@ def mostrarPantalla():
     ["CARCEL ",320,600,800,100,599,466,666,"SALIDA  "]
     ]
 
-    print("")
+    print(Back.WHITE)
     for i in tablero:
         if i == tablero[0]  or i == tablero[1] or i == tablero[7]:
-            print("     |"+"-"*69+"|")
+            print("\t|"+"-"*69+"|")
         else:
-            print("     |------|                                                       |------|")
+            print("\t|------|                                                       |------|")
 
-        print("     ",end="")
+        print("\t",end="")
         for x in i:
             if i == tablero[0]  or i == tablero[7]:
                 if x == i[0] or x == i[8]:
@@ -43,13 +46,10 @@ def mostrarPantalla():
                     print("|",x,end="M ")
                     
         print("|")
-    print("     |"+"-"*69+"|")
-    print("""
+    print("\t|"+"-"*69+"|")
+    print(Back.RESET)
 
-
-    """)
 mostrarPantalla()
-
 class jugadores():
     def __init__(self,nombre,ficha):
         self.nombre = nombre
@@ -59,9 +59,10 @@ class jugadores():
         print("Jugador actual: "+self.nombre)
         print("Color de ficha: "+self.ficha)
 
+n_jugadores = int(input("Dime el numero de jugadores(2-4): "))
 
-n_jugadores = int(input("Dime el numero de jugadores: "))
-
-for i in range(n_jugadores):
-    print("Dime el nombre del jugador",i+1,":",end=" ")
-    nombre_jugador = input("")
+if n_jugadores == 2:
+    nombre = input("Dime tu nombre: ")
+    ficha = input ("Dime el color de tu ficha")
+    ObjJugador1 = jugadores("")
+    
