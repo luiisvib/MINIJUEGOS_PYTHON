@@ -3,6 +3,8 @@ import random
 import os
 import time
 import msvcrt
+os.system("pip install pychess")
+
 def mostrarTablero(tablero):
     print()
     marco ='                         ╠════╬════╬════╬════╬════╬════╬════╬════╣'
