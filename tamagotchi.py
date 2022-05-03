@@ -1,5 +1,7 @@
 import os
 import time
+import rataAccion
+
 
 class Ratagotchi:
     def __init__(self, nombre, vida=0, hambre=50, higiene=100, felicidad=100):
@@ -13,6 +15,15 @@ class Ratagotchi:
         return 'Nombre: {}\nVida: {}\nHambre: {}\nHigiene: {}\nFelicidad: {}'.format(self.nombre, self.vida, self.hambre, self.higiene, self.felicidad)
 
     def alimentar(self):
+        rataAccion.rataCome()
+        print("""
+            (\-.
+             / _`> .---------.
+     _)     / _)=  |'-------'|
+    (      / _/    |O   O   o|
+     `-.__(___)_   | o O . o |
+                   `---------'
+            """)
         print('La rata ' + self.nombre + ' esta comiendo.')
         self.hambre += 20
         if self.hambre == 100:
@@ -20,12 +31,14 @@ class Ratagotchi:
             self.hambre = 100
         
     def jugar(self):
+        rataAccion.rataJuega()
         print('Jugaste con la rata ' + self.nombre)
         self.felicidad += 20
         if self.felicidad > 100:
             self.felicidad = 100
 
     def banyar(self):
+        rataAccion.rataDucha()
         print('Has bañado a la rata ' + self.nombre)
         self.higiene += 50
         if self.higiene > 100:
@@ -53,6 +66,12 @@ class Ratagotchi:
 def menu():
     nombre = input('Ponle un nombre a la rata: ')
     rata = Ratagotchi(nombre)
+    print('Hola soy', rata.nombre)
+    print("""
+      __QQ
+     (_)_">
+    _)     """)
+    time.sleep(2)
 
     while not rata.muerte():
         print('\n'+ str(rata))
@@ -69,5 +88,7 @@ def menu():
             print('Chauuu')
             break
     print(rata.nombre + ' murio.')
+
+
 
 menu()
