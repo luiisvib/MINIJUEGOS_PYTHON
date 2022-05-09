@@ -16,7 +16,7 @@ class Ratagotchi:
         return 'Nombre: {}\nVida: {}\nHambre: {}\nHigiene: {}\nFelicidad: {}'.format(self.nombre, self.vida, self.hambre, self.higiene, self.felicidad)
 
     def alimentar(self):
-        rataAccion.rataCome()
+        # rataAccion.rataCome()
         print("""
             (\-.
              / _`> .---------.
@@ -32,14 +32,14 @@ class Ratagotchi:
             self.hambre = 100
         
     def jugar(self):
-        rataAccion.rataJuega()
+        # rataAccion.rataJuega()
         print('Jugaste con la rata ' + self.nombre)
         self.felicidad += 20
         if self.felicidad > 100:
             self.felicidad = 100
 
     def banyar(self):
-        rataAccion.rataDucha()
+        # rataAccion.rataDucha()
         print('Has bañado a la rata ' + self.nombre)
         self.higiene += 50
         if self.higiene > 100:
@@ -76,7 +76,7 @@ def acciones():
 
     while not rata.muerte():
         print('\n'+ str(rata))
-        print('\n¿Qué quieres hacer? ')
+        print('\n¿Qué quieres hacer?')
         print('\n1. Alimentar\n2. Jugar\n3. Bañar\n0. Guardar y salir\n')
         opc = int(input('Seleccionar: '))
         if opc == 1:
@@ -86,9 +86,8 @@ def acciones():
         elif opc == 3:
             rata.cuidados('bañar')
         elif opc == 0:
-            lavidamisma.guardar_conexion()
-            print('Chauuu')
-            break
+            print('Guardado')
+            return lavidamisma.guardar_conexion()            
     print(rata.nombre + ' murio.')
 
 def menu():
