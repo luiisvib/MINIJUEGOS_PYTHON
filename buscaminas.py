@@ -3,7 +3,6 @@ import random
 import os
 import time
 import msvcrt
-os.system("pip install pychess")
 
 def mostrarTablero(tablero):
     print()
@@ -18,7 +17,6 @@ def mostrarTablero(tablero):
 
     print('                         ╚════╩════╩════╩════╩════╩════╩════╩════╝')
     print()
-
 
 def asignarMinas(tablero):
     cont=0
@@ -58,7 +56,7 @@ def autoPoner(tablero,tableroSinMinas,columna,fila):
                 elif tablero[fila+i][columna+x] == '  ':
                     if contMinas(tablero,fila+i,columna+x) == 0:
                         tablero[fila+i][columna+x]=' 0'
-                        tableroSinMinas[fila+i][columna+x]=' 0'
+                        tableroSinMinas[fila+i][columna+x]=' 0' 
                         if (fila+i,columna+x)not in ceros:
                             ceros.append((fila+i,columna+x))
                     else:

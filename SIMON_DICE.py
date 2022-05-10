@@ -80,71 +80,105 @@ def mostrar_tablero():
         for x in i:
             print("\t",x,end="")
         print("")
-
-print("""
-
-                        Estas en el juego de Simon Dice
-                        
-                        Niveles de Dificultad:
-                        1- Principiate
-                        2- Profesional
-                        3- Avanzado
-                        4- Experto
-
-                        
-                        """)
-
-dificultad = int(input("Elige el nivel de dificultad: "))
-borrarPantalla()
-def mostrar_pantalla():
-    for i in tabla:
-        for x in i:
-            print("\t",x,end="")
-        print("")
-    tiempo(dificultad)
+contador_principiante = 0
+contador_profesional = 0
+contador_avanzado = 0
+contador_experto = 0
+contador=0
+def jugar():
     borrarPantalla()
-    apagar_tablero()
+    global contador
+    global modo
+    print("""
 
+                Niveles de Dificultad:
+                1- Principiate
+                2- Profesional
+                3- Avanzado
+                4- Experto
 
-salir = False
-contador = 0
-numeros = ""
+                            
+                            """)
 
-while salir == False:
-    contador += 1
-    aleatorio = random.randrange(1,5)
-    aleatoriostr = str(aleatorio)
-    numeros += aleatoriostr
-    for i in numeros:
-        if i == "1":
-            iluminar_cuadrado1()
-        if i == "2":
-            iluminar_cuadrado2()
-        if i == "3":
-            iluminar_cuadrado3()
-        if i == "4":
-            iluminar_cuadrado4()
-        mostrar_pantalla()
-        mostrar_tablero()
+    dificultad = int(input("Elige el nivel de dificultad: "))
+    borrarPantalla()
+    def mostrar_pantalla():
+        for i in tabla:
+            for x in i:
+                print("\t",x,end="")
+            print("")
         tiempo(dificultad)
         borrarPantalla()
-    mostrar_tablero()
-    adivinar = input("Dime la secuencia de numeros: ")
-    if adivinar == numeros:
-        print("Has acertado, ¡CONTINUA!")
-        time.sleep(1)
-        borrarPantalla()
-        
-    else:
-        print("\n¡Has perdido!\n")
-        if dificultad ==1:
-            modo = "Principiante"
-        elif dificultad ==2:
-            modo = "Profesional"
-        elif dificultad ==3:
-            modo = "Avanzado"
-        elif dificultad ==4:
-            modo = "Extremo"
+        apagar_tablero()
 
-        print("Has llegado hasta el nivel",contador,"en modo",modo,"\n\n")
-        salir = True
+
+    salir = False
+    contador = 0
+    numeros = ""
+    borrarPantalla()
+    while salir == False:
+        contador += 1
+        aleatorio = random.randrange(1,5)
+        aleatoriostr = str(aleatorio)
+        numeros += aleatoriostr
+        for i in numeros:
+            if i == "1":
+                iluminar_cuadrado1()
+            if i == "2":
+                iluminar_cuadrado2()
+            if i == "3":
+                iluminar_cuadrado3()
+            if i == "4":
+                iluminar_cuadrado4()
+            mostrar_pantalla()
+            mostrar_tablero()
+            tiempo(dificultad)
+            borrarPantalla()
+        mostrar_tablero()
+        adivinar = input("Dime la secuencia de numeros: ")
+        if adivinar == numeros:
+            print("Has acertado, ¡CONTINUA!")
+            time.sleep(1)
+            borrarPantalla()
+            
+        else:
+            print("\n¡Has perdido!\n")
+            if dificultad ==1:
+                modo = "Principiante"
+            elif dificultad ==2:
+                modo = "Profesional"
+            elif dificultad ==3:
+                modo = "Avanzado"
+            elif dificultad ==4:
+                modo = "Experto"
+
+            print("Has llegado hasta el nivel",contador,"en modo",modo,"\n\n")
+            salir = True
+    
+
+salir_menu = False
+while salir_menu == False:
+    borrarPantalla()
+    if contador > contador_principiante and modo=="Principiante":
+        contador_principiante = contador
+
+    elif contador > contador_profesional and modo=="Profesional":
+        contador_profesional = contador
+
+    elif contador > contador_avanzado and modo=="Avanzado":
+        contador_avanzado = contador
+
+    elif contador > contador_experto and modo=="Experto":
+        contador_experto = contador
+
+
+    print("""  
+            Estas en el juego de SIMON DICE                                                   Records niveles :
+            
+                                                                                              Principiante: """,contador_principiante,"""
+                                                                                              Profesional: """,contador_profesional,"""
+                                                                                              Avanzado: """,contador_avanzado,"""
+                                                                                              Experto: """,contador_experto)
+    iniciar_juego = input("Pulsa enter para empezar el juego ")
+    jugar()
+    borrarPantalla()
