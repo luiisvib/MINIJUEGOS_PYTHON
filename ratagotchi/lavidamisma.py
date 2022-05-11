@@ -1,5 +1,6 @@
 from datetime import datetime
 
+
 # print(datetime.now().strftime('%Y-%m-%d %H:%M'))
 
 def guardar_conexion():
@@ -13,7 +14,7 @@ def guardar_conexion():
 def refresh():
     try:
         f=open('./ratagotchi/tiempo.txt','rt')
-        tiempo=f.read()
+        tiempo=f.read() 
         print(tiempo[3:8])
     except FileNotFoundError as e:
         print('No se puede abrir el archivo:', e)
@@ -31,7 +32,10 @@ def refresh():
     print(transcurrido)
     return transcurrido
 
-# refresh()
+
+
+
+
 
 # try:
 #     f = open("new.txt", "wt")
@@ -56,3 +60,4 @@ def refresh():
     #     f.close()
     # except FileNotFoundError as e:
     #     print('No se puede abrir el archivo:', e)
+

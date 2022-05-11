@@ -62,11 +62,42 @@ class Ratagotchi:
             self.jugar()
         elif accion == 'bañar':
             self.banyar()
+  
 
-
-def acciones():
+def new_rata():
     nombre = input('Ponle un nombre a la rata: ')
     rata = Ratagotchi(nombre)
+    acciones(rata)
+
+def guardar(rata):
+    estado = [rata.nombre +'\n', str(rata.vida) +'\n', str(rata.hambre) +'\n', str(rata.higiene) +'\n', str(rata.felicidad) +'\n']
+    with open('./ratagotchi/estado.txt','wt') as writer:
+        writer.writelines(estado)  
+
+def continuar():
+    status = []
+    try:
+        datos = open('./ratagotchi/estado.txt','rt')
+        linea = datos.readlines()
+        for i in range(len(linea)):
+            status.append(linea[i][:-1])
+    except FileNotFoundError as e:
+        print('No se puede abrir el archivo:', e)
+    finally:    
+        datos.close()
+
+    name=status[0]
+    life=int(status[1])
+    hungry=int(status[2])
+    hygiene=int(status[3])
+    happiness=int(status[4])
+
+    rata = Ratagotchi(name,life,hungry,hygiene,happiness)
+    acciones(rata)
+    
+
+def acciones(rata):
+    
     print('Hola soy', rata.nombre)
     print("""
       __QQ
@@ -87,6 +118,8 @@ def acciones():
             rata.cuidados('bañar')
         elif opc == 0:
             print('Guardado')
+            
+            guardar(rata)
             return lavidamisma.guardar_conexion()            
     print(rata.nombre + ' murio.')
 
@@ -95,9 +128,9 @@ def menu():
         print('\n1. Nueva rata\n2. Continuar\n3. Salir\n')
         op = int(input('Seleccionar: '))
         if op == 1:
-            acciones()
+            new_rata()
         elif op == 2:
-            pass
+            continuar()
         elif op == 3:
             print('Chauuu')
             break
