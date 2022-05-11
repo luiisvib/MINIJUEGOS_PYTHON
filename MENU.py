@@ -3,7 +3,6 @@ import random
 import time
 import buscaminas
 
-
 def borrarPantalla():
    if os.name == "posix":
        os.system ("clear")
@@ -26,4 +25,8 @@ print("""
 """)
 
 elegir_menu = input("Escribe que juego al que quieres jugar: ")
+if elegir_menu =="Buscaminas":
+    buscaminas.juegobuscaminas()
 
+borrarPantalla()
+print("holaaa")
