@@ -2,6 +2,7 @@ import os
 import random
 import time
 import buscaminas
+import Wordle
 
 def borrarPantalla():
    if os.name == "posix":
@@ -27,6 +28,7 @@ print("""
 elegir_menu = input("Escribe que juego al que quieres jugar: ")
 if elegir_menu =="Buscaminas":
     buscaminas.juegobuscaminas()
-
+elif elegir_menu=="Wordle":
+    Wordle.juegoWordle()
 borrarPantalla()
 print("holaaa")
