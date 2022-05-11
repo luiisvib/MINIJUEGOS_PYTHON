@@ -102,7 +102,7 @@ def juegoPrincipal(tableroFlecha,emojisList,tableroSinMinas,tablero,simbolo):
         elif movFich == ' ':
             break
         else:
-            continue
+            os.system('cls')
         posAnterior=tableroFlecha[fila][columna]
         tableroFlecha[fila][columna] = emojiRandom
         os.system('cls')
@@ -171,103 +171,105 @@ def mensajeBuscaminas():
         |  _ <| |  | |\___ \| |      / /\ \ | |\/| | | | |     | / /\ \  \___ \ 
         | |_) | |__| |____) | |____ / ____ \| |  | |_| |_| |\  |/ ____ \ ____) |
         |____/ \____/|_____/ \_____/_/    \_\_|  |_|_____|_| \_/_/    \_\_____/ 
-
         ''') 
-
-tablero = [[ '  ' for i in range(8)] for i in range(8)]
-tableroSinMinas = deepcopy(tablero)
-asignarMinas(tablero)
-os.system('cls')
-print('''
-                                    . . .                         
-                                     \|/                          
-                                   `--+--'                        
-                                     /|\                          
-                                    ' | '                         
-                                      |                           
-                                  ,--'#`--.                       
-                                  |#######|                       
-                               _.-'#######`-._                    
-                            ,-'###############`-.                 
-                          ,'#####################`,               
-                         /#########################\              
-                        |###########################|             
-                       |#############################|                        
-                       |#############################|            
-                       |#############################|            
-                        |###########################/             
-                         \#########################/              
-                          `.#####################,'               
-                            `._###############_,'                 
-                               `--..#####..--'             
-         ____  _    _  _____  _____          __  __ _____ _   _           _____ 
-        |  _ \| |  | |/ ____|/ ____|   /\   |  \/  |_   _| \ | |   /\    / ____|
-        | |_) | |  | | (___ | |       /  \  | \  / | | | |  \| |  /  \  | (___  
-        |  _ <| |  | |\___ \| |      / /\ \ | |\/| | | | |     | / /\ \  \___ \ 
-        | |_) | |__| |____) | |____ / ____ \| |  | |_| |_| |\  |/ ____ \ ____) |
-        |____/ \____/|_____/ \_____/_/    \_\_|  |_|_____|_| \_/_/    \_\_____/ 
-
-    ''')
-print('El objetivo del juego Buscaminas es liberar todas las casillas que no tienen una mina.\nEl tablero es de 8x8 y en el habran 10 minas que deberas de evitar.\nLas casillas con número indican la cantidad de minas en las casillas que la rodean.\nLas banderas te serviran de referencia a ti mismo para saber donde puede haber una mina, estas las podras desplegar por todo el tablero.\nPara poder moverte por el tablero necesitaras de las teclas W/A/S/D.\nPara confirmar la posicion que quieres elejir deberas pular espacio\nMucha suerte!!!')
-print()
-input('Dale a enter para empezar: ')
-os.system('cls')
-while True:   
-    tableroFlecha = deepcopy(tableroSinMinas)
+def partidaPrincipal():
+    tablero = [[ '  ' for i in range(8)] for i in range(8)]
+    tableroSinMinas = deepcopy(tablero)
+    asignarMinas(tablero)
     os.system('cls')
-    mensajeBuscaminas()
-    mostrarTablero(tableroSinMinas)                                                        
-    print('Quieres poner una bandera?:\ns = Poner Bandera\nn = Quitar Bandera\nj = Juagar\no = Sales del buscaminas\nElige: ')
-    bandera=msvcrt.getwch()
-    os.system('cls')
-    emojisList=['😀','😃','😄','😁','😆','😅','😂','🤣','😊','😇','🙂','🙃','😉','😌','😍','🥰','😘','😗','😙','😚','😋','😛','😝','😜','🤪','🤨','🧐','🤓','😎','🤩','🥳','😏','😒','😞','😔','😟','😕','🙁','☹️','😣','😖','😫','😩','🥺','😢','😭','😤','😠','😡','🤬','🤯','😳','🥵','🥶','😱','😨','😰','😥','😓','🤗','🤔','🤭','🤫','🤥','😶','😐','😑','😬','🙄','😯','😦','😧','😮','😲','🥱','😴','🤤','😪','😵','🤐','🥴','🤢','🤮','🤧','😷','🤒','🤕','🤑','🤠','😈','👿','👹','👺','🤡','💩','👻','💀','☠️','👽','👾','🤖','🎃','😺','😸','😹','😻','😼','😽','🙀','😿','😾']
-    if bandera == 's':
-        juegoPrincipal(tableroFlecha,emojisList,tableroSinMinas,tablero,False)
-    elif bandera == 'n':
-        juegoPrincipal(tableroFlecha,emojisList,tableroSinMinas,tablero,'🚩')
-    elif bandera == 'j':
-        if juegoPrincipal(tableroFlecha,emojisList,tableroSinMinas,tablero,True) == 0:
-            break
-    elif bandera == 'o':
-        os.system('cls')
-        print()
-        print('''
-          _____  _____             _____  _____             _____   _____    ____   _____         _  _    _   _____            _____  
-         / ____||  __ \     /\    / ____||_   _|    /\     / ____| |  __ \  / __ \ |  __ \       | || |  | | / ____|    /\    |  __ \ 
-        | |  __ | |__) |   /  \  | |       | |     /  \   | (___   | |__) || |  | || |__) |      | || |  | | | |  __    /  \   | |__) |
-        | | |_ ||  _  /   / /\ \ | |       | |    / /\ \   \___ \  |  ___/ | |  | ||  _  /   _   | || |  | | | | |_ |  / /\ \  |  _  / 
-        | |__| || | \ \  / ____ \| |____  _| |_  / ____ \  ____) | | |     | |__| || | \ \  | |__| || |__| | | |__| | / ____ \ | | \ \ 
-         \_____||_|  \_\/_/    \_\\_____||_____|/_/    \_\|_____/  |_|      \____/ |_|  \_\  \____/  \____/   \_____|/_/    \_\|_|  \_\
-
-
-
-                 ________o8A888888o_
-            _o888888888888K_]888888o
-                      ~~~+8888888888o
-                          ~8888888888
-                          o88888888888
-                         o8888888888888
-                       _8888888888888888
-                      o888888888888888888_
-                     o88888888888888888888_
-                    _8888888888888888888888_
-                    888888888888888888888888_
-                    8888888888888888888888888
-                    88888888888888888888888888
-                    88888888888888888888888888
-                    888888888888888888888888888
-                    ~88888888888888888888888888_
-                     (88888888888888888888888888
-                      888888888888888888888888888
-                       888888888888888888888888888_
-                       ~8888888888888888888888888888
-                         +88888888888888888888~~~~~
-                          ~=888888888888888888o
-                   _=oooooooo888888888888888888
-                    _o88=8888==~88888888===8888_ 
-                    ~   =~~ _o88888888=      ~~~
-                            ~ o8=~88=~     
+    print('''
+    
+                                       . . .                         
+                                        \|/                          
+                                      `--+--'                        
+                                        /|\                          
+                                       ' | '                         
+                                         |                           
+                                     ,--'#`--.                       
+                                     |#######|                       
+                                  _.-'#######`-._                    
+                               ,-'###############`-.                 
+                             ,'#####################`,               
+                            /#########################\              
+                           |###########################|             
+                          |#############################|                        
+                          |#############################|            
+                          |#############################|            
+                           \###########################/             
+                            \#########################/              
+                             `.#####################,'               
+                              `._###############_,'                 
+                                 `--..#####..--'             
+             ____  _    _  _____  _____          __  __ _____ _   _           _____ 
+            |  _ \| |  | |/ ____|/ ____|   /\   |  \/  |_   _| \ | |   /\    / ____|
+            | |_) | |  | | (___ | |       /  \  | \  / | | | |  \| |  /  \  | (___  
+            |  _ <| |  | |\___ \| |      / /\ \ | |\/| | | | |     | / /\ \  \___ \ 
+            | |_) | |__| |____) | |____ / ____ \| |  | |_| |_| |\  |/ ____ \ ____) |
+            |____/ \____/|_____/ \_____/_/    \_\_|  |_|_____|_| \_/_/    \_\_____/ 
+      
+      
         ''')
-        break
-    else:
-        continue
+    print('El objetivo del juego Buscaminas es liberar todas las casillas que no tienen una mina.\nEl tablero es de 8x8 y en el habran 10 minas que deberas de evitar.\nLas casillas con número indican la cantidad de minas en las casillas que la rodean.\nLas banderas te serviran de referencia a ti mismo para saber donde puede haber una mina, estas las podras desplegar por todo el tablero.\nPara poder moverte por el tablero necesitaras de las teclas W/A/S/D.\nPara confirmar la posicion que quieres elejir deberas pular espacio\nMucha suerte!!!')
+    print()
+    input('Dale a enter para empezar: ')
+    os.system('cls')
+    while True:   
+        tableroFlecha = deepcopy(tableroSinMinas)
+        os.system('cls')
+        mensajeBuscaminas()
+        mostrarTablero(tableroSinMinas)                                                        
+        print('Quieres poner una bandera?:\ns = Poner Bandera\nn = Quitar Bandera\nj = Juagar\no = Sales del buscaminas\nElige: ')
+        bandera=msvcrt.getwch()
+        os.system('cls')
+        emojisList=['😀','😃','😄','😁','😆','😅','😂','🤣','😊','😇','🙂','🙃','😉','😌','😍','🥰','😘','😗','😙','😚','😋','😛','😝','😜','🤪','🤨','🧐','🤓','😎','🤩','🥳','😏','😒','😞','😔','😟','😕','🙁','😣','😖','😫','😩','🥺','😭','😤','😠','😡','🤬','🤯','😳','🥵','🥶','😱','😨','😰','😥','😓','🤗','🤔','🤭','🤫','🤥','😶','😐','😑','😬','🙄','😯','😦','😧','😮','😲','🥱','😴','🤤','😪','😵','🤐','🥴','🤢','🤮','🤧','😷','🤒','🤕','🤑','🤠','😈','👿','👹','👺','🤡','💩','👻','💀','👽','👾','🤖','🎃','😺','😸','😹','😻','😼','😽','🙀','😿','😾']
+        if bandera == 's':
+            juegoPrincipal(tableroFlecha,emojisList,tableroSinMinas,tablero,False)
+        elif bandera == 'n':
+            juegoPrincipal(tableroFlecha,emojisList,tableroSinMinas,tablero,'🚩')
+        elif bandera == 'j':
+            if juegoPrincipal(tableroFlecha,emojisList,tableroSinMinas,tablero,True) == 0:
+                break
+        elif bandera == 'o':
+            os.system('cls')
+            print()
+            print('''
+              _____  _____             _____  _____             _____   _____    ____   _____         _  _    _   _____             _____  
+             / ____||  __ \     /\    / ____||_   _|    /\     / ____| |  __ \  / __ \ |  __ \       | || |  | | / ____|     /\    |  __ \ 
+            | |  __ | |__) |   /  \  | |       | |     /  \   | (___   | |__) || |  | || |__) |      | || |  | | | |  __    /  \   | |__) |
+            | | |_ ||  _  /   / /\ \ | |       | |    / /\ \   \___ \  |  ___/ | |  | ||  _  /   _   | || |  | | | | |_ |  / /\ \  |  _  / 
+            | |__| || | \ \  / ____ \| |____  _| |_  / ____ \  ____) | | |     | |__| || | \ \  | |__| || |__| | | |__| | / ____ \ | | \ \ 
+             \_____||_|  \_\/_/    \_\\\_____||_____|/_/    \_\|_____/  |_|      \____/ |_|  \_\  \____/  \____/   \_____|/_/    \_\|_|  \_\
+ 
+ 
+                    ________o8A888888o_
+                _o888888888888K_]888888o
+                        ~~~+8888888888o
+                            ~8888888888
+                            o88888888888
+                            o8888888888888
+                        _8888888888888888
+                        o888888888888888888_
+                        o88888888888888888888_
+                        _8888888888888888888888_
+                        888888888888888888888888_
+                        8888888888888888888888888
+                        88888888888888888888888888
+                        88888888888888888888888888
+                        888888888888888888888888888
+                        ~88888888888888888888888888_
+                        (88888888888888888888888888
+                        888888888888888888888888888
+                        888888888888888888888888888_
+                        ~8888888888888888888888888888
+                            +88888888888888888888~~~~~
+                            ~=888888888888888888o
+                    _=oooooooo888888888888888888
+                        _o88=8888==~88888888===8888_ 
+                        ~   =~~ _o88888888=      ~~~
+                                ~ o8=~88=~     
+            ''')
+            break
+        else:
+            continue
+
+partidaPrincipal()
