@@ -3,14 +3,14 @@ import time
 import random
 
 def juegoWordle():
-    f = open("./palabraswordle.txt", "rt", encoding="utf-8")
+    f = open("palabraswordle.txt", "rt", encoding="utf-8")
     b = f.read().split("\n")
 
     word = b[random.randint(0, len(b)-1)].upper()
     ##print(word)
     f.close()
 
-    s = open('./palabras05.txt', 'rt', encoding = "utf-8")
+    s = open('palabras05.txt', 'rt', encoding = "utf-8")
     lines = s.readlines()
 
 
