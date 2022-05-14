@@ -3,11 +3,11 @@ import os
 import random
 
 def borrarPantalla():
-   if os.name == "posix":
-       os.system ("clear")
-   elif os.name == "ce" or os.name == "nt" or os.name == "dos":
-       os.system ("cls")
-borrarPantalla()
+    if os.name == "posix":
+        os.system ("clear")
+    elif os.name == "ce" or os.name == "nt" or os.name == "dos":
+        os.system ("cls")
+    borrarPantalla()
 
 def apagar_tablero():
     global tabla
@@ -173,12 +173,12 @@ while salir_menu == False:
 
 
     print("""  
-            Estas en el juego de SIMON DICE                                                   Records niveles :
-            
-                                                                                              Principiante: """,contador_principiante,"""
-                                                                                              Profesional: """,contador_profesional,"""
-                                                                                              Avanzado: """,contador_avanzado,"""
-                                                                                              Experto: """,contador_experto)
+        Estas en el juego de SIMON DICE                                                   Records niveles :
+        
+                                                                                        Principiante: """,contador_principiante,"""
+                                                                                        Profesional: """,contador_profesional,"""
+                                                                                        Avanzado: """,contador_avanzado,"""
+                                                                                        Experto: """,contador_experto)
     iniciar_juego = input("Pulsa enter para empezar el juego ")
     jugar()
     borrarPantalla()
