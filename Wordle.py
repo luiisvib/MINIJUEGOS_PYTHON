@@ -4,27 +4,28 @@ import time
 import random
 
 
-f = open("c:/Users/Usuario/Desktop/DAW/1_Programacion/0_ProyectoJuegos/0_ProyWordle/palabraswordle.txt", "rt", encoding="utf-8")
-b = f.read().split("\n")
+fich_wordle = open("palabraswordle.txt", "rt", encoding="utf-8")
+palabras_fich = fich_wordle.read().split("\n")
 
-word = b[random.randint(0, len(b)-1)].upper()
+word = palabras_fich[random.randint(0, len(palabras_fich)-1)].upper()  # << Palabra secreta a adivinar
 ##print(word)
-f.close()
+fich_wordle.close()
 
-s = open('c:/Users/Usuario/Desktop/DAW/1_Programacion/0_ProyectoJuegos/0_ProyWordle/palabras05.txt', 'rt', encoding = "utf-8")
-lines = s.readlines()
+fich_diccionario = open('palabras05.txt', 'rt', encoding = "utf-8")
+lines = fich_diccionario.readlines()
 
 
-# lista con todas las palabras en español con 5 letras para comprbacion
-l2 = []
+# lista con todas las palabras en español con 5 letras para comprobacion
+list_palab05 = []
 for i in range(len(lines)):
-    l2.append(lines[i][:-1].upper())
-s.close()
+    list_palab05.append(lines[i][:-1].upper())
+fich_diccionario.close()
 
 
+# lista 5x6 vacia donde se añadirán las palabras/intentos introducidos por el usuario
+p_usuario = [["   " for col in range(5)] for row in range(6)]
 
-l = [["   " for col in range(5)] for row in range(6)]
-
+# lista con las letras para el teclado
 t = [" Q "," W "," E "," R "," T "," Y "," U "," I "," O "," P "," A "," S "," D "," F "," G "," H "," J "," K "," L "," Ñ "," Z "," X "," C "," V "," B "," N "," M "]
 
 
@@ -78,8 +79,8 @@ def teclado(t, pal, p_fin):
 
 cont = 0
 
-tablero(l)
-teclado(t, l, 0)
+tablero(p_usuario)
+teclado(t, p_usuario, 0)
 
 
 while cont < 6:
@@ -90,45 +91,45 @@ while cont < 6:
         print("Longitud incorrecta, 5 letras")
         p = input("Introduce palabra: ").upper()
 
-    while p not in l2:
+    while p not in list_palab05:
         print("La palabra introducida no existe")
-        p = input("Introduce palabra7: ").upper()
-        print(p)
+        p = input("Introduce palabra: ").upper()
 
-    posib = ["","","","",""]  # VAR AUX para estudiar letras posibles de la palabra introducida(AMARILLAS)
-    w_comp = ["","","","",""] # VAR AUX para estudiar letras posibles de la palabra oculta
-    fin = ["","","","",""]    # VAR AUX para estudiar letras CORRECTAS (VERDES)
+    aux_p_usu = ["","","","",""]  # VAR AUX para estudiar letras posibles de la palabra introducida(AMARILLAS)
+    aux_word = ["","","","",""] # VAR AUX para estudiar letras posibles de la palabra secreta
+    p_fin = ["","","","",""]    # VAR para introducir las letras de la palabra introducida con sus colores correspondientes
     
 
     ## COMPROBACION DE LAS LETRAS CORRECTAS E INCORRECTAS:
     for i in range(5):
         
         if p[i] == word[i]:
-            fin[i] = "\033[;30;42m"+" "+ p[i] +" "+'\033[0;m'  ## LETRA en VERDE
+            p_fin[i] = "\033[;30;42m"+" "+ p[i] +" "+'\033[0;m'  ## LETRA en VERDE
         
         elif p[i] not in word:
-            fin[i] = "\033[;30;47m"+" "+ p[i] +" "+'\033[0;m'  ## LETRA en BLANCO
-            w_comp[i] = word[i]
+            p_fin[i] = "\033[;30;47m"+" "+ p[i] +" "+'\033[0;m'  ## LETRA en BLANCO
+            aux_word[i] = word[i]
                 
         else:
-            posib[i] = p[i]
-            w_comp[i] = word[i]
+            aux_p_usu[i] = p[i]
+            aux_word[i] = word[i]
 
 
-    ## Estudio de las letras que, a priori, no son correctas o incorrectas: si están en distinta posición (AMARILLO) o se ha dado el caso de que la letra está en la palabra pero ya está en la posición correcta (BLANCO)
+    ## Estudio de las letras que, a priori, no son correctas o incorrectas: 
+    # si están en distinta posición (AMARILLO) o se ha dado el caso de que la letra está en la palabra pero ya está en la posición correcta (BLANCO)
     for i in range(5):
-        if posib[i] in w_comp and posib[i] != "":
-            fin[i] = "\033[;30;43m"+" "+ p[i] +" "+'\033[0;m'  ## LETRA en AMARILLO
-            w_comp.remove(posib[i])
-        elif posib[i] not in w_comp:
-            fin[i] = "\033[;30;47m"+" "+ p[i] +" "+'\033[0;m'  ## LETRA en BLANCO
+        if aux_p_usu[i] in aux_word and aux_p_usu[i] != "":
+            p_fin[i] = "\033[;30;43m"+" "+ p[i] +" "+'\033[0;m'  ## LETRA en AMARILLO
+            aux_word.remove(aux_p_usu[i])
+        elif aux_p_usu[i] not in aux_word:
+            p_fin[i] = "\033[;30;47m"+" "+ p[i] +" "+'\033[0;m'  ## LETRA en BLANCO
 
-    l[cont] = fin
+    p_usuario[cont] = p_fin
 
     os.system("cls")
     
-    tablero(l)
-    teclado(t, p, fin)
+    tablero(p_usuario)
+    teclado(t, p, p_fin)
     cont += 1
 
     if p == word:
