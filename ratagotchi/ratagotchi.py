@@ -1,7 +1,6 @@
 import os
 import time
 import rataAccion 
-import lavidamisma 
 
 
 class Ratagotchi:
@@ -16,7 +15,7 @@ class Ratagotchi:
         return 'Nombre: {}\nVida: {}\nHambre: {}\nHigiene: {}\nFelicidad: {}'.format(self.nombre, self.vida, self.hambre, self.higiene, self.felicidad)
 
     def alimentar(self):
-        rataAccion.rataCome()
+        # rataAccion.rataCome()
         print("""
             (\-.
              / _`> .---------.
@@ -32,7 +31,7 @@ class Ratagotchi:
             self.hambre = 100
         
     def jugar(self):
-        rataAccion.rataJuega()
+        # rataAccion.rataJuega()
         print("""
                _   _
               (q\_/p)
@@ -52,7 +51,7 @@ class Ratagotchi:
             self.felicidad = 0
 
     def banyar(self):
-        rataAccion.rataDucha()
+        # rataAccion.rataDucha()
         print(  """
            ,------|
           []      |             
@@ -69,7 +68,7 @@ class Ratagotchi:
         self.higiene += 50
         if self.higiene > 100:
             self.higiene = 100
-        elif self.higiene <= 0:
+        elif self.higiene < 0:
             self.higiene = 0
     def muerte(self):
         if self.vida <= 0 or self.hambre <= 0 or self.felicidad <= 0:
@@ -144,7 +143,7 @@ def acciones(rata):
             elif opc == 0:
                 print('Guardado')                
                 guardar(rata)
-                return lavidamisma.guardar_conexion() 
+                return
         print('\n'+ str(rata))           
         print(rata.nombre + ' murio.')
         print("""
