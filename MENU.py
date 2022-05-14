@@ -4,7 +4,7 @@ from time import sleep
 import buscaminas
 import Wordle 
 import SIMON_DICE
-import tic_tac_toe
+import ratagotchi
 
 def borrarPantalla():
    if os.name == "posix":
@@ -13,15 +13,16 @@ def borrarPantalla():
        os.system ("cls")
 borrarPantalla()
 
-
-
-
 salir =False
 while salir == False:
     print("""
 
-                                                  JUEGOS DE MOVIL
-
+                ███╗   ███╗██╗███╗   ██╗██╗     ██╗██╗   ██╗███████╗ ██████╗  ██████╗ ███████╗
+                ████╗ ████║██║████╗  ██║██║     ██║██║   ██║██╔════╝██╔════╝ ██╔═══██╗██╔════╝
+                ██╔████╔██║██║██╔██╗ ██║██║     ██║██║   ██║█████╗  ██║  ███╗██║   ██║███████╗
+                ██║╚██╔╝██║██║██║╚██╗██║██║██   ██║██║   ██║██╔══╝  ██║   ██║██║   ██║╚════██║
+                ██║ ╚═╝ ██║██║██║ ╚████║██║╚█████╔╝╚██████╔╝███████╗╚██████╔╝╚██████╔╝███████║
+                ╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚═╝ ╚════╝  ╚═════╝ ╚══════╝ ╚═════╝  ╚═════╝ ╚══════╝                                                                                                                            
 """)
 
     print("""
@@ -41,19 +42,19 @@ while salir == False:
     if elegir_menu =="BUSCAMINAS":
         buscaminas.juegobuscaminas()
     elif elegir_menu=="WORDLE":
-        Wordle.juego_wordle
+        Wordle.juego_wordle()
         sleep(3)
     elif elegir_menu=="SIMON DICE":
         SIMON_DICE.juego_simondice()
         sleep(3)
         
-    elif elegir_menu=="TIC TAC TOE":
-        tic_tac_toe.juego_TICTACTOE()
-    #elif elegir_menu=="RATAGOCHI":
-        #ratagochi.juego_ratagochi()
+    #elif elegir_menu=="TIC TAC TOE":
+        
+    elif elegir_menu=="RATAGOCHI":
+        ratagotchi.juego_ratagochi()
         
     elif elegir_menu=="SALIR":
-        salir==True
+        salir=True
     else:
         print("\nAsegurate de que has escrito bien la acción a realizar y en MAYUSCULAS")
     sleep(3)

@@ -8,8 +8,8 @@ def juego_simondice():
             os.system ("clear")
         elif os.name == "ce" or os.name == "nt" or os.name == "dos":
             os.system ("cls")
-        borrarPantalla()
 
+    global contador
     def apagar_tablero():
         global tabla
         tabla = [
@@ -155,10 +155,12 @@ def juego_simondice():
 
                 print("Has llegado hasta el nivel",contador,"en modo",modo,"\n\n")
                 salir = True
+
         
 
     salir_menu = False
     while salir_menu == False:
+        time.sleep(1.5)
         borrarPantalla()
         if contador > contador_principiante and modo=="Principiante":
             contador_principiante = contador
@@ -174,12 +176,24 @@ def juego_simondice():
 
 
         print("""  
-            Estas en el juego de SIMON DICE                                                   Records niveles :
-            
-                                                                                            Principiante: """,contador_principiante,"""
-                                                                                            Profesional: """,contador_profesional,"""
-                                                                                            Avanzado: """,contador_avanzado,"""
-                                                                                            Experto: """,contador_experto)
-        iniciar_juego = input("Pulsa enter para empezar el juego ")
-        jugar()
-        borrarPantalla()
+         _______. __  .___  ___.   ______   .__   __.     _______   __    ______  _______ 
+        /       ||  | |   \/   |  /  __  \  |  \ |  |    |       \ |  |  /      ||   ____|
+       |   (----`|  | |  \  /  | |  |  |  | |   \|  |    |  .--.  ||  | |  ,----'|  |__   
+        \   \    |  | |  |\/|  | |  |  |  | |  . `  |    |  |  |  ||  | |  |     |   __|  
+    .----)   |   |  | |  |  |  | |  `--'  | |  |\   |    |  '--'  ||  | |  `----.|  |____ 
+    |_______/    |__| |__|  |__|  \______/  |__| \__|    |_______/ |__|  \______||_______|
+
+                                     Records niveles :
+                                    
+                                        Principiante: """,contador_principiante,"""
+                                        Profesional: """,contador_profesional,"""
+                                        Avanzado: """,contador_avanzado,"""
+                                        Experto: """,contador_experto)
+        print("\n")
+        iniciar_juego = input("Pulsa enter para empezar el juego o pulsa x para salir ")
+        if iniciar_juego =="x":
+            return
+        else:
+            jugar()
+            borrarPantalla()
+

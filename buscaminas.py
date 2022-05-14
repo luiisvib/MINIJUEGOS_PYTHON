@@ -11,7 +11,7 @@ def juegobuscaminas():
             os.system ("clear")
         elif os.name == "ce" or os.name == "nt" or os.name == "dos":
             os.system ("cls")
-
+    borrarPantalla()
     def mostrarTablero(tablero):
         print()
         marco ='                         ╠════╬════╬════╬════╬════╬════╬════╬════╣'
@@ -113,7 +113,7 @@ def juegobuscaminas():
                 continue
             posAnterior=tableroFlecha[fila][columna]
             tableroFlecha[fila][columna] = emojiRandom
-            os.system('cls')
+            borrarPantalla()
             mensajeBuscaminas()         
             mostrarTablero(tableroFlecha)
             tableroFlecha[fila][columna] = '  '
@@ -169,7 +169,7 @@ def juegobuscaminas():
             tablero[fila][columna] = '🚩'
         else:
             print('ashee')
-        os.system('cls')
+        borrarPantalla()
 
     def mensajeBuscaminas():
         print('''
@@ -185,7 +185,7 @@ def juegobuscaminas():
     tablero = [[ '  ' for i in range(8)] for i in range(8)]
     tableroSinMinas = deepcopy(tablero)
     asignarMinas(tablero)
-    os.system('cls')
+    borrarPantalla()
     print('''
                                         . . .                         
                                         \|/                          
@@ -219,7 +219,7 @@ def juegobuscaminas():
     print('El objetivo del juego Buscaminas es liberar todas las casillas que no tienen una mina.\nEl tablero es de 8x8 y en el habran 10 minas que deberas de evitar.\nLas casillas con número indican la cantidad de minas en las casillas que la rodean.\nLas banderas te serviran de referencia a ti mismo para saber donde puede haber una mina, estas las podras desplegar por todo el tablero.\nPara poder moverte por el tablero necesitaras de las teclas W/A/S/D.\nPara confirmar la posicion que quieres elejir deberas pular espacio\nMucha suerte!!!')
     print()
     input('Dale a enter para empezar: ')
-    os.system('cls')
+    borrarPantalla()
     while True:   
         tableroFlecha = deepcopy(tableroSinMinas)
         os.system('cls')
@@ -227,7 +227,7 @@ def juegobuscaminas():
         mostrarTablero(tableroSinMinas)                                                        
         print('Quieres poner una bandera?:\ns = Poner Bandera\nn = Quitar Bandera\nj = Juagar\no = Sales del buscaminas\nElige: ')
         bandera=msvcrt.getwch()
-        os.system('cls')
+        borrarPantalla()
         emojisList=['😀','😃','😄','😁','😆','😅','😂','🤣','😊','😇','🙂','🙃','😉','😌','😍','🥰','😘','😗','😙','😚','😋','😛','😝','😜','🤪','🤨','🧐','🤓','😎','🤩','🥳','😏','😒','😞','😔','😟','😕','🙁','☹️','😣','😖','😫','😩','🥺','😢','😭','😤','😠','😡','🤬','🤯','😳','🥵','🥶','😱','😨','😰','😥','😓','🤗','🤔','🤭','🤫','🤥','😶','😐','😑','😬','🙄','😯','😦','😧','😮','😲','🥱','😴','🤤','😪','😵','🤐','🥴','🤢','🤮','🤧','😷','🤒','🤕','🤑','🤠','😈','👿','👹','👺','🤡','💩','👻','💀','☠️','👽','👾','🤖','🎃','😺','😸','😹','😻','😼','😽','🙀','😿','😾']
         if bandera == 's':
             juegoPrincipal(tableroFlecha,emojisList,tableroSinMinas,tablero,False)
@@ -237,7 +237,7 @@ def juegobuscaminas():
             if juegoPrincipal(tableroFlecha,emojisList,tableroSinMinas,tablero,True) == 0:
                 break
         elif bandera == 'o':
-            os.system('cls')
+            borrarPantalla()
             print()
             print('''
               _____  _____             _____  _____             _____   _____    ____   _____         _  _    _    _____            _____  
