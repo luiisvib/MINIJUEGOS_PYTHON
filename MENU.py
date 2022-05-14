@@ -1,7 +1,11 @@
 import os
 import random
-import time
+from time import sleep
 import buscaminas
+import Wordle 
+import SIMON_DICE
+import tic_tac_toe
+
 def borrarPantalla():
    if os.name == "posix":
        os.system ("clear")
@@ -9,11 +13,18 @@ def borrarPantalla():
        os.system ("cls")
 borrarPantalla()
 
-print("""
-        JUEGOS 
+
+
+
+salir =False
+while salir == False:
+    print("""
+
+                                                  JUEGOS DE MOVIL
+
 """)
 
-print("""
+    print("""
         MENU:
 
             - BUSCAMINAS
@@ -25,26 +36,32 @@ print("""
             - SALIR
 """)
 
-
-salir =False
-while salir == False:
     elegir_menu = input("Escribe que juego al que quieres jugar: ")
+    borrarPantalla()
     if elegir_menu =="BUSCAMINAS":
         buscaminas.juegobuscaminas()
     elif elegir_menu=="WORDLE":
-        import Wordle 
-        time.sleep(3)
+        Wordle.juego_wordle
+        sleep(3)
     elif elegir_menu=="SIMON DICE":
-        import SIMON_DICE
-        time.sleep(3)
+        SIMON_DICE.juego_simondice()
+        sleep(3)
+        
     elif elegir_menu=="TIC TAC TOE":
-        import tic_tac_toe
-    elif elegir_menu=="RATAGOCHI":
-        import ratagotchi
+        tic_tac_toe.juego_TICTACTOE()
+    #elif elegir_menu=="RATAGOCHI":
+        #ratagochi.juego_ratagochi()
+        
     elif elegir_menu=="SALIR":
         salir==True
     else:
         print("\nAsegurate de que has escrito bien la acción a realizar y en MAYUSCULAS")
+    sleep(3)
+    borrarPantalla()
 
-borrarPantalla()
-print("holaaa")
+print("""
+
+            HAS SALIDO DEL PROGRAMA
+            ¡ESPERO QUE TE LO HAYAS PASADO BIEN!
+
+""")

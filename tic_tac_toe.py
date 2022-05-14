@@ -126,3 +126,5 @@ def juego_TICTACTOE():
             buttons[row][column].grid(row=row,column=column)
 
     window.mainloop()
+
+juego_TICTACTOE()
