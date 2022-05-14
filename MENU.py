@@ -1,12 +1,7 @@
 import os
 import random
 import time
-import lavidamisma #NECESARIO PARA EL RATAGOCHI (TIEMPO)
-import palabras05.txt #LAS PALABRAS DEL JUEGO DEL WORDLE
-import palabraswordle #LAS PALABRAS DEL JUEGO DEL WORDLE
-
-
-
+import buscaminas
 def borrarPantalla():
    if os.name == "posix":
        os.system ("clear")
@@ -30,15 +25,18 @@ print("""
             - SALIR
 """)
 
-elegir_menu = input("Escribe que juego al que quieres jugar: ")
+
 salir =False
 while salir == False:
+    elegir_menu = input("Escribe que juego al que quieres jugar: ")
     if elegir_menu =="BUSCAMINAS":
-        import buscaminas
+        buscaminas.juegobuscaminas()
     elif elegir_menu=="WORDLE":
-        import Wordle
+        import Wordle 
+        time.sleep(3)
     elif elegir_menu=="SIMON DICE":
         import SIMON_DICE
+        time.sleep(3)
     elif elegir_menu=="TIC TAC TOE":
         import tic_tac_toe
     elif elegir_menu=="RATAGOCHI":
