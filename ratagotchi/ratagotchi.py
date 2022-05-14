@@ -15,7 +15,7 @@ class Ratagotchi:
         return 'Nombre: {}\nVida: {}\nHambre: {}\nHigiene: {}\nFelicidad: {}'.format(self.nombre, self.vida, self.hambre, self.higiene, self.felicidad)
 
     def alimentar(self):
-        # rataAccion.rataCome()
+        rataAccion.rataCome()
         print("""
             (\-.
              / _`> .---------.
@@ -31,7 +31,7 @@ class Ratagotchi:
             self.hambre = 100
         
     def jugar(self):
-        # rataAccion.rataJuega()
+        rataAccion.rataJuega()
         print("""
                _   _
               (q\_/p)
@@ -51,7 +51,7 @@ class Ratagotchi:
             self.felicidad = 0
 
     def banyar(self):
-        # rataAccion.rataDucha()
+        rataAccion.rataDucha()
         print(  """
            ,------|
           []      |             
