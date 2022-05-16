@@ -127,4 +127,3 @@ def juego_TICTACTOE():
 
     window.mainloop()
 
-juego_TICTACTOE()
