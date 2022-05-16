@@ -41,37 +41,37 @@ def juego_simondice():
             time.sleep(0.1)
         
     def iluminar_cuadrado1():
-        x = 0
+        fila = 0
         for i in tabla:
-            x = x+1
-            if x == 8:
+            fila = fila+1
+            if fila == 8:
                 break
             else:
                 i[0] = "\033[41m" + i[0] + "\033[0m"
 
     def iluminar_cuadrado2():
-        x = 0
+        fila = 0
         for i in tabla:
-            x = x+1
-            if x == 8:
+            fila = fila+1
+            if fila == 8:
                 break
             else:
                 i[1] = "\033[42m" + i[1] + "\033[0m"
 
     def iluminar_cuadrado3():
-        x = 0
+        fila = 0
         for i in tabla:
-            x = x+1
-            if x < 8:
+            fila = fila+1
+            if fila < 8:
                 continue
             else:
                 i[0] = "\033[44m" + i[0] + "\033[0m"
 
     def iluminar_cuadrado4():
-        x = 0
+        fila = 0
         for i in tabla:
-            x = x+1
-            if x < 8:
+            fila = fila+1
+            if fila < 8:
                 continue
             else:
                 i[1] = "\033[45m" + i[1] + "\033[0m"
