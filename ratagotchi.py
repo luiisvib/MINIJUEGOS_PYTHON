@@ -3,6 +3,13 @@ import time
 import rataAccion 
     
 def juego_ratagochi():
+    def borrarPantalla():
+        if os.name == "posix":
+            os.system ("clear")
+        elif os.name == "ce" or os.name == "nt" or os.name == "dos":
+            os.system ("cls")
+    borrarPantalla()
+
     class Ratagotchi:
         
         def __init__(self, nombre, vida=100, hambre=50, higiene=100, felicidad=100):
@@ -122,7 +129,8 @@ def juego_ratagochi():
         acciones(rata)
         
 
-    def acciones(rata):    
+    def acciones(rata):  
+        borrarPantalla()  
         print('Hola soy', rata.nombre)
         print("""
         __QQ
@@ -161,6 +169,7 @@ def juego_ratagochi():
     def menu():
         try:
             while True:
+                borrarPantalla()
                 print('''    
          _____          _______         _____   ____  _______  _____  _    _  _____ 
         |  __ \     /\ |__   __| /\    / ____| / __ \|__   __|/ ____|| |  | ||_   _|

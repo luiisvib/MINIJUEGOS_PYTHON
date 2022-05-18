@@ -5,6 +5,12 @@ import time
 import msvcrt
 import animacion
 
+def borrarPantalla():
+   if os.name == "posix":
+       os.system ("clear")
+   elif os.name == "ce" or os.name == "nt" or os.name == "dos":
+       os.system ("cls")
+borrarPantalla()
 
 def mostrarTablero(tablero):
     print()
@@ -97,17 +103,17 @@ def juegoPrincipal(tableroMoverse, emojisList, tableroSinMinas, tablero, opccion
         elif movTeclado == 'd' and columna != 7:
             columna += 1
         else:
-            os.system('cls')
+             borrarPantalla()
         posAnterior = tableroMoverse[fila][columna]
         tableroMoverse[fila][columna] = emojiRandom
-        os.system('cls')
+        borrarPantalla()
         animacion.mensajeBuscaminas()
         mostrarTablero(tableroMoverse)
         tableroMoverse[fila][columna] = '  '
     if opccionJugar == True:
         cont = 0
         if tablero[fila][columna] == '💣':
-            os.system('cls')
+            borrarPantalla()
             animacion.perdiste()
             mostrarTablero(tablero)
             return 0
@@ -126,7 +132,7 @@ def juegoPrincipal(tableroMoverse, emojisList, tableroSinMinas, tablero, opccion
                     cont += 1
         time.sleep(0.001)
         if cont == 54:
-            os.system('cls')
+            borrarPantalla()
             animacion.ganaste()
             mostrarTablero(tablero)
             return 0
@@ -142,27 +148,27 @@ def juegoPrincipal(tableroMoverse, emojisList, tableroSinMinas, tablero, opccion
         tablero[fila][columna] = '🚩'
     else:
         pass
-    os.system('cls')
+    borrarPantalla()
 
 
 def menuPartida():
     tablero = [['  ' for i in range(8)] for i in range(8)]
     tableroSinMinas = deepcopy(tablero)
     asignarMinas(tablero)
-    os.system('cls')
+    borrarPantalla()
     animacion.bomba()
     print('El objetivo del juego Buscaminas es liberar todas las casillas que no tienen una mina.\nEl tablero es de 8x8 y en el habran 10 minas que deberas de evitar.\nLas casillas con número indican la cantidad de minas en las casillas que la rodean.\nLas banderas te serviran de referencia a ti mismo para saber donde puede haber una mina, estas las podras desplegar por todo el tablero.\nPara poder moverte por el tablero necesitaras de las teclas W/A/S/D.\nPara confirmar la posicion que quieres elejir deberas pular espacio\nMucha suerte!!!')
     print()
     input('Dale a enter para empezar: ')
-    os.system('cls')
+    borrarPantalla()
     while True:
         tableroMoverse = deepcopy(tableroSinMinas)
-        os.system('cls')
+        borrarPantalla()
         animacion.mensajeBuscaminas()
         mostrarTablero(tableroSinMinas)
         print('Quieres poner una bandera?:\ns = Poner Bandera\nn = Quitar Bandera\nj = Juagar\no = Sales del buscaminas\nElige: ')
         bandera = msvcrt.getwch()
-        os.system('cls')
+        borrarPantalla()
         emojisList = ['😀', '😃', '😄', '😁', '😆', '😅', '😂', '🤣', '😊', '😇', '🙂', '🙃', '😉', '😌', '😍', '🥰', '😘', '😗', '😙', '😚', '😋', '😛', '😝', '😜', '🤪', '🤨', '🧐', '🤓', '😎', '🤩', '🥳', '😏', '😒', '😞', '😔', '😟', '😕', '🙁', '😣', '😖', '😫', '😩', '🥺', '😭', '😤', '😠', '😡', '🤬', '🤯', '😳', '🥵', '🥶', '😱',
                       '😨', '😰', '😥', '😓', '🤗', '🤔', '🤭', '🤫', '🤥', '😶', '😐', '😑', '😬', '🙄', '😯', '😦', '😧', '😮', '😲', '🥱', '😴', '🤤', '😪', '😵', '🤐', '🥴', '🤢', '🤮', '🤧', '😷', '🤒', '🤕', '🤑', '🤠', '😈', '👿', '👹', '👺', '🤡', '💩', '👻', '💀', '👽', '👾', '🤖', '🎃', '😺', '😸', '😹', '😻', '😼', '😽', '🙀', '😿', '😾']
         if bandera == 's':
@@ -175,7 +181,7 @@ def menuPartida():
             if juegoPrincipal(tableroMoverse, emojisList, tableroSinMinas, tablero, True) == 0:
                 break
         elif bandera == 'o':
-            os.system('cls')
+            borrarPantalla()
             print()
             animacion.graciasXjuagar()
             break

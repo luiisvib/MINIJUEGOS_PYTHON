@@ -40,7 +40,7 @@ while salir == False:
             0- SALIR
 """)
 
-    elegir_menu = input("Dime el juego al que quieres jugar ")
+    elegir_menu = input("Dime el juego al que quieres jugar: ")
     borrarPantalla()
     if elegir_menu =="1":
         buscaminas.menuPartida()

@@ -191,6 +191,7 @@ def juego_simondice():
                                         Experto: """,contador_experto)
         print("\n")
         iniciar_juego = input("Pulsa enter para empezar el juego o pulsa x para salir ")
+    
         if iniciar_juego =="x":
             return
         else:

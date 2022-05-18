@@ -9,6 +9,7 @@ def juego_wordle():
         elif os.name == "ce" or os.name == "nt" or os.name == "dos":
             os.system ("cls")
     borrarPantalla()
+    
     f = open("palabraswordle.txt", "rt", encoding="utf-8")
     b = f.read().split("\n")
 
