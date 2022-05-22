@@ -155,6 +155,7 @@ def juego_simondice():
 
                 print("Has llegado hasta el nivel",contador,"en modo",modo,"\n\n")
                 salir = True
+                time.sleep(2)
 
         
 
@@ -193,7 +194,7 @@ def juego_simondice():
         iniciar_juego = input("Pulsa enter para empezar el juego o pulsa x para salir ")
     
         if iniciar_juego =="x":
-            return
+            salir_menu = True
         else:
             jugar()
             borrarPantalla()

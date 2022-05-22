@@ -162,6 +162,7 @@ def juego_ratagochi():
                 |R.I.P|  
            \wvV,|_____|vwv/,
             """)
+            time.sleep(4)
         except ValueError as e:
             print('Seleccione una opción valida.')
             acciones(rata)
